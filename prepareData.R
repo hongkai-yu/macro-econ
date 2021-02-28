@@ -1,0 +1,12 @@
+library(tidyverse)
+library(quantmod)
+library(Quandl)
+
+sp500_monthly = Quandl("MULTPL/SP500_REAL_PRICE_MONTH")
+shiller_pe_monthly = Quandl("MULTPL/SHILLER_PE_RATIO_MONTH")
+gdp_quarterly = Quandl("FRED/GDP")
+tbill_yield_monthly = Quandl("FRED/GS10")
+cpi_monthly = Quandl("FRED/CPIAUCSL")
+# Quandl.api_key('dsjJaDfgtyXuvP1n124Z')
+# consumer_sentiment = Quandl('UMICH/SOC22')
+consumer_confidence_monthly = read_csv('data/CSCICP03USM665S.csv')
