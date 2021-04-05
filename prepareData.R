@@ -1,5 +1,5 @@
 library(tidyverse)
-# library(quantmod)
+library(tidyquant)
 library(Quandl)
 library(lubridate)
 
@@ -121,23 +121,29 @@ sp500_re6 = calc_sp500_return(6)
 sp500_re12 = calc_sp500_return(12)
 sp500_re60 = calc_sp500_return(60)
 
-sp500_re60 %>% tail()
+# 8. Volatility of SP500
+sp500_daily = tq_get('^GSPC', from = '1950-12-01', to = '2021-01-31') %>% 
+  select('date','close') %>% 
+  rename(Date = date, Value = close)
 
-# 8. M2 / Real GDP ratio
-plot(m2, type = 'l')
-m2_gdp_ratio = inner_join(m2, gdp_monthly, by = 'Date') %>% 
-  mutate(m2_gdp_ratio = Value.x / Value.y) %>% 
-  select(Date, m2_gdp_ratio)
-plot(m2_gdp_ratio, type = 'l')
+sp500_daily_return = sp500_daily %>%
+  calculate_growth_rate(periods = 1, lagPeriod = 1) %>% 
+  filter(Date >= '1960-01-01', Date <= '2020-12-31')
+
+
+volatility = sp500_daily_return %>% 
+  group_by(Date = as.Date(paste(year(Date), month(Date), '01', sep = '-'))) %>% 
+  summarise(volatility = sd(Percent))
+
 
 # IV. All together
 df = plyr::join_all(list(real_gdp_growth, inflation, tbill_yield,
-                   shiller_pe, consumer_confidence, mktcap_gdp_ratio,
+                   shiller_pe, consumer_confidence, mktcap_gdp_ratio, volatility,
                    sp500_return, sp500_re3, sp500_re6, sp500_re12, sp500_re60),
               by = 'Date', type = 'inner')
 
 reg = lm(sp500_return ~ . - Date, data = df)
-summary(reg) # not significant at all
+summary(reg)
 
 # Define a crash as the return in the 1% quantile
 threshold = quantile(df$sp500_return, 0.01)
@@ -150,15 +156,19 @@ for (i in 1:nrow(df)) {
 }
 
 # Define a bubble as there will be a crash in 6 months
+periods = 6
 df$bubble = 0
 for (i in 1:nrow(df)) {
-  if (df$crash[i] != 1 && (1 %in% df$crash[(i+1):(i+6)])) {
+  if (df$crash[i] != 1 && (1 %in% df$crash[(i+1):(i+periods)])) {
     df$bubble[i] = 1
   }
 }
 
+df = df %>% select(-crash)
+names(df)
+
 summary(df$bubble)
 plot(df$bubble)
 
-# write_csv(df, './data/bubble_detection.csv')
+write_csv(df, './data/bubble_detection.csv')
                         
