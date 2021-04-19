@@ -6,19 +6,16 @@ library(lubridate)
 # I. Raw data
 
 # Data frequency is monthly unless specified
-sp500 = Quandl("MULTPL/SP500_REAL_PRICE_MONTH") %>% filter(day(Date) == 1)
-tbill_yield = Quandl("FRED/GS10")
-shiller_pe = Quandl("MULTPL/SHILLER_PE_RATIO_MONTH")
-gdp = Quandl("FRED/GDP") # this is quarterly
-real_gdp = Quandl("FRED/GDPC1") # this is quarterly
-cpi = Quandl("FRED/CPIAUCSL")
-m2 = Quandl("FRED/M2SL") 
-consumer_confidence = read_csv('data/CSCICP03USM665S.csv')%>%
-  rename(Date = DATE, Value = CSCICP03USM665S)
+# sp500 = Quandl("MULTPL/SP500_REAL_PRICE_MONTH") %>% filter(day(Date) == 1)
+# tbill_yield = Quandl("FRED/GS10")
+# shiller_pe = Quandl("MULTPL/SHILLER_PE_RATIO_MONTH")
+# gdp = Quandl("FRED/GDP") # this is quarterly
+# real_gdp = Quandl("FRED/GDPC1") # this is quarterly
+# cpi = Quandl("FRED/CPIAUCSL")
+# consumer_confidence = read_csv('data/CSCICP03USM665S.csv')%>%
+#   rename(Date = DATE, Value = CSCICP03USM665S)
 
-plot(m2, type = 'l')
-
-# II. Help functions
+# II. Helper functions
 
 # Calculate the change rate of time-series data; annualized, in percent
 # If don't annualized, use period = 1
@@ -38,21 +35,6 @@ quarterly2monthly = function(data) {
   month_plus2 = data %>% mutate(Date = Date + months(2))
   rbind(data, month_plus1, month_plus2) %>% arrange(Date) %>% return
 }
-
-# # Rename a dataset
-# rename_value = function(data, name) {
-#   if (missing(name)) {
-#     name = deparse(substitute(data))
-#   }
-#   if ("Value" %in% names(data)) {
-#     data %>% rename("{name}" := Value) %>% return
-#   } else if ("Percent" %in% names(data)) {
-#     data %>% rename("{name}" := Percent) %>% return
-#   } else {
-#     return(data)
-#   }
-# }
-
 
 # III. Output data
 
@@ -108,8 +90,6 @@ calc_sp500_return = function(return_months = 1) {
 }
 
 sp500_return = calc_sp500_return(1)
-plot(sp500_return, type = 'l')
-summary(sp500_return$sp500_return)
 
 # Stock market downturns
 sp500_return %>% filter(sp500_return < -10)
@@ -121,29 +101,27 @@ sp500_re6 = calc_sp500_return(6)
 sp500_re12 = calc_sp500_return(12)
 sp500_re60 = calc_sp500_return(60)
 
-# 8. Volatility of SP500
-sp500_daily = tq_get('^GSPC', from = '1950-12-01', to = '2021-01-31') %>% 
-  select('date','close') %>% 
-  rename(Date = date, Value = close)
-
-sp500_daily_return = sp500_daily %>%
-  calculate_growth_rate(periods = 1, lagPeriod = 1) %>% 
-  filter(Date >= '1960-01-01', Date <= '2020-12-31')
-
-
-volatility = sp500_daily_return %>% 
-  group_by(Date = as.Date(paste(year(Date), month(Date), '01', sep = '-'))) %>% 
-  summarise(volatility = sd(Percent))
+# # 8. Volatility of SP500
+# sp500_daily = tq_get('^GSPC', from = '1954-12-01', to = '2021-01-31') %>% 
+#   select('date','close') %>% 
+#   rename(Date = date, Value = close)
+# 
+# sp500_daily_return = sp500_daily %>%
+#   calculate_growth_rate(periods = 1, lagPeriod = 1)
+# 
+# 
+# volatility = sp500_daily_return %>% 
+#   group_by(Date = as.Date(paste(year(Date), month(Date), '01', sep = '-'))) %>% 
+#   summarise(volatility = sd(Percent)) %>% 
+#   filter(Date >= '1960-01-01')
 
 
 # IV. All together
 df = plyr::join_all(list(real_gdp_growth, inflation, tbill_yield,
-                   shiller_pe, consumer_confidence, mktcap_gdp_ratio, volatility,
+                   shiller_pe, consumer_confidence, mktcap_gdp_ratio,
+                   # volatility,
                    sp500_return, sp500_re3, sp500_re6, sp500_re12, sp500_re60),
               by = 'Date', type = 'inner')
-
-reg = lm(sp500_return ~ . - Date, data = df)
-summary(reg)
 
 # Define a crash as the return in the 1% quantile
 threshold = quantile(df$sp500_return, 0.01)
@@ -165,10 +143,8 @@ for (i in 1:nrow(df)) {
 }
 
 df = df %>% select(-crash)
+
 names(df)
+# write_csv(df, './data/bubble_detection.csv')
 
-summary(df$bubble)
-plot(df$bubble)
 
-write_csv(df, './data/bubble_detection.csv')
-                        

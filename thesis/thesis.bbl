@@ -1,0 +1,90 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/global//global/global}
+    \entry{Chat2018}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=2a0eedc9bf06b97285877e502c0b61ab}{%
+           family={Chatzis},
+           familyi={C\bibinitperiod},
+           given={Sotirios\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=76180c4eecda46c92559ccbe010f885c}{%
+           family={Siakoulis},
+           familyi={S\bibinitperiod},
+           given={Vassilis},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fade65002664f818d0a3992a06cc23de}{%
+           family={Petropoulos},
+           familyi={P\bibinitperiod},
+           given={Anastasios},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a01df29c4db202c3de4f8e7e0333ae3c}{%
+           family={Stavroulakis},
+           familyi={S\bibinitperiod},
+           given={Evangelos},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=439f20835e8053c1dd32ac47622f0be0}{%
+           family={Vlachogiannakis},
+           familyi={V\bibinitperiod},
+           given={Nikos},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a9d1675d0c9ddf73752b0e7363ce1a5a}
+      \strng{fullhash}{dbed36ac6615d403a7473214e514cf12}
+      \strng{bibnamehash}{dbed36ac6615d403a7473214e514cf12}
+      \strng{authorbibnamehash}{dbed36ac6615d403a7473214e514cf12}
+      \strng{authornamehash}{a9d1675d0c9ddf73752b0e7363ce1a5a}
+      \strng{authorfullhash}{dbed36ac6615d403a7473214e514cf12}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This work contributes to this ongoing debate on the nature and the characteristics of propagation channels of crash events in international stock markets. Specifically, we investigate transmission mechanisms across stock markets along with effects from bond and currency markets. Our approach comprises a solid forecasting mechanism of the probability of a stock market crash event in various time frames. The developed approach combines different machine learning algorithms which are presented with daily stock, bond and currency data from 39 countries that cover a large spectrum of economies. Specifically, we leverage the merits of a series of techniques including Classification Trees, Support Vector Machines, Random Forests, Neural Networks, Extreme Gradient Boosting, and Deep Neural Networks. To the best of our knowledge, this is the first time that Deep Learning and Boosting approaches are considered in the literature as a means of predicting stock market crisis episodes. The independent variables included in our data contain information regarding both the two fundamental linkage channels through which financial contagion can be initiated: returns and volatility. We apply a suite of machine learning algorithms for selecting the most relevant variables out of a large set of proposed ones. Finally, we employ bootstrap sampling for adjusting the imbalanced nature of the available fitting dataset. Our experimental results provide strong evidence that stock market crises tend to exhibit persistence. We also find significant evidence of interdependence and cross-contagion effects among stock, bond and currency markets. Finally, we show that the use of Deep Neural Networks significantly increases the classification accuracy, while offering a robust way to create a global systemic early warning tool that is more efficient and risk-sensitive than the currently established ones. Thus, central banks may use these tools to early adjust their monetary policy, so as to ensure financial stability.}
+      \field{issn}{0957-4174}
+      \field{journaltitle}{Expert Systems with Applications}
+      \field{title}{Forecasting stock market crisis events using deep and statistical machine learning techniques}
+      \field{volume}{112}
+      \field{year}{2018}
+      \field{pages}{353\bibrangedash 371}
+      \range{pages}{19}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eswa.2018.06.032
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0957417418303798
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0957417418303798
+      \endverb
+      \keyw{Stock market crashes,Forecasting,Random forests,Support vector machines,Deep learning,XGBoost}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

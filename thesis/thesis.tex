@@ -1,0 +1,91 @@
+\documentclass[12pt, man, a4paper, floatsintext]{apa7}
+    
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{amsmath, amssymb}
+
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+
+\usepackage[style=apa, sortcites=true, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+
+\title{A Machine Learning Approach to Equity Bubble Detection and Market Crash Prediction}
+\shorttitle{Machine Learning to Bubble Detection}
+\author{Hongkai Yu}
+\affiliation{Vancouver School of Economics, University of British Columbia
+          \\ ECON 490
+          \\ Dr. Jonathan Graves
+          \\ April 23, 2021}
+
+\abstract{
+    This is the abstract section.
+}
+
+\begin{document}
+
+    \linespread{1} % for tables
+
+    \maketitle
+
+    \section{Introduction}
+
+Bubbles and financial crashes are important themes of financial markets. Asset bubbles describe the situation where asset prices significantly deviate from their fundamental values. Notable historical bubble includes the Dutch tulip mania in 1637, the dot-com bubble in 1990s, and the US housing bubble in 2000s. Investors who are unaware of the potential risks of bubbles paid huge prices when markets crashed. 
+
+According to people, this happened \parencite{Chat2018}.
+
+    \section{Background}
+
+    \section{Model}
+
+    \subsection{Model selection}
+
+    \subsubsection{Random Forests}
+
+
+    \paragraph{GDP}
+
+According to people, this happened again \parencite{Chat2018}.
+
+According to people, this happened again \parencite{Chat2018}.
+
+As shown in Figure~\ref{fig:cv}
+
+\begin{figure}
+    \centering
+    \caption{CV-tuned decision threshold}
+    \includegraphics[width=12cm]{cv_threshold}
+    \label{fig:cv}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \caption{Variable Importance}
+    \includegraphics[width=12cm]{varImpRF}
+    \label{fig:varImp}
+\end{figure}
+
+According to people, this happened again \parencite{Chat2018}.
+As shown in Equation~\ref{eq:logit}
+
+\begin{equation}
+    \text{logit}(P(Y)) = \log{\frac{P(Y)}{1-P(Y)}} = X \beta
+    \label{eq:logit}
+\end{equation}
+
+
+
+As shown in Table~\ref{tab:logit}
+\input{logit.tex}
+% \input{df.tex}
+
+According to people, this happened again \parencite{Chat2018}.
+According to people, this happened again \parencite{Chat2018}.
+According to people, this happened again \parencite{Chat2018}.
+
+    \clearpage
+
+    \printbibliography
+
+\end{document}
