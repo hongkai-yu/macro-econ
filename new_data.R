@@ -15,6 +15,5 @@ data_today = data.frame(Date = '2021-04-04',
                          sp500_re60 = 96.32)
 
 predict(rf.out, newdata = data_today, type = 'prob')
+predict(rf.out, newdata = data_today, type = 'response')
 
-# names(df_test)
-# names(data_today)

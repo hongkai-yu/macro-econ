@@ -4,6 +4,8 @@ library(glmnet)
 library(randomForest)
 library(caret)
 
+View(df_test)
+
 # as factor
 df$bubble = as.factor(df$bubble)
 
@@ -70,14 +72,10 @@ rf.out = randomForest(bubble ~ .-Date, data = df_train, importance = TRUE,
                       cutoff = c(1 - threshold, threshold))
 rf$confusion
 
-
 df_test$rf.test = predict(rf.out, newdata = df_test, type = 'response')
 
 rf.cv.cfm = confusionMatrix(as.factor(ifelse(df_test$rf.test == 1, 'bubble', 'non-bubble')),
                             as.factor(ifelse(df_test$bubble == 1, 'bubble', 'non-bubble')))
-importance(rf.out)
-varImpPlot(rf.out)
-
 
 # Random Forest, Balanced data set
 rf_balance.out = randomForest(bubble ~ .-Date, data = df_train_balanced, importance = TRUE)

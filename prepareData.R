@@ -5,15 +5,14 @@ library(lubridate)
 
 # I. Raw data
 
-# Data frequency is monthly unless specified
-# sp500 = Quandl("MULTPL/SP500_REAL_PRICE_MONTH") %>% filter(day(Date) == 1)
-# tbill_yield = Quandl("FRED/GS10")
-# shiller_pe = Quandl("MULTPL/SHILLER_PE_RATIO_MONTH")
-# gdp = Quandl("FRED/GDP") # this is quarterly
-# real_gdp = Quandl("FRED/GDPC1") # this is quarterly
-# cpi = Quandl("FRED/CPIAUCSL")
-# consumer_confidence = read_csv('data/CSCICP03USM665S.csv')%>%
-#   rename(Date = DATE, Value = CSCICP03USM665S)
+sp500 = Quandl("MULTPL/SP500_REAL_PRICE_MONTH") %>% filter(day(Date) == 1)
+tbill_yield = Quandl("FRED/GS10")
+shiller_pe = Quandl("MULTPL/SHILLER_PE_RATIO_MONTH")
+gdp = Quandl("FRED/GDP") # this is quarterly
+real_gdp = Quandl("FRED/GDPC1") # this is quarterly
+cpi = Quandl("FRED/CPIAUCSL")
+consumer_confidence = read_csv('data/CSCICP03USM665S.csv')%>%
+  rename(Date = DATE, Value = CSCICP03USM665S)
 
 # II. Helper functions
 
@@ -145,6 +144,8 @@ for (i in 1:nrow(df)) {
 df = df %>% select(-crash)
 
 names(df)
+
 # write_csv(df, './data/bubble_detection.csv')
+
 
 

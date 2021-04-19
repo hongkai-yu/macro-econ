@@ -19,6 +19,116 @@
 
 \refsection{0}
   \datalist[entry]{apa/global//global/global}
+    \entry{Bash2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=c6fc727b28450209ded1f9d3045613b3}{%
+           family={Bashchenko},
+           familyi={B\bibinitperiod},
+           given={Oksana},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b62a64a6b681d3b0da26a46f6624530b}{%
+           family={Marchal},
+           familyi={M\bibinitperiod},
+           given={Alexis},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{14e40cd3615451662d5a5e6b4fe69166}
+      \strng{fullhash}{14e40cd3615451662d5a5e6b4fe69166}
+      \strng{bibnamehash}{14e40cd3615451662d5a5e6b4fe69166}
+      \strng{authorbibnamehash}{14e40cd3615451662d5a5e6b4fe69166}
+      \strng{authornamehash}{14e40cd3615451662d5a5e6b4fe69166}
+      \strng{authorfullhash}{14e40cd3615451662d5a5e6b4fe69166}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Capital Markets: Market Efficiency eJournal}
+      \field{title}{Deep Learning for Asset Bubbles Detection}
+      \field{year}{2020}
+    \endentry
+    \entry{datasize}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=ca0a4540c4f1bb1db6a3e6c33a03c7d1}{%
+           family={Boulmaiz},
+           familyi={B\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d6c2d36fb78c371446ee64ac3a39c4e8}{%
+           family={Guermoui},
+           familyi={G\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1f9e565e1eecb28002d4422dacce0dd6}{%
+           family={Boutaghane},
+           familyi={B\bibinitperiod},
+           given={H},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{9e4684fa6bd268eec7e67bd05a3ce5de}
+      \strng{fullhash}{4f16f6af5708cbbc41682999e725aca6}
+      \strng{bibnamehash}{4f16f6af5708cbbc41682999e725aca6}
+      \strng{authorbibnamehash}{4f16f6af5708cbbc41682999e725aca6}
+      \strng{authornamehash}{9e4684fa6bd268eec7e67bd05a3ce5de}
+      \strng{authorfullhash}{4f16f6af5708cbbc41682999e725aca6}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Modeling Earth Systems and Environment}
+      \field{title}{Impact of training data size on the LSTM performances for rainfall--runoff modeling}
+      \field{volume}{6}
+      \field{year}{2020}
+      \field{pages}{2153\bibrangedash 2164}
+      \range{pages}{12}
+    \endentry
+    \entry{buffett}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7c55df43ef83371815c3f02a9779be92}{%
+           family={Buffett},
+           familyi={B\bibinitperiod},
+           given={Warren},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b89cb2c760576a7a920316e455d01c12}{%
+           family={Loomis},
+           familyi={L\bibinitperiod},
+           given={Carol},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a2d93b1dcdb37edb991fb8775e7211e5}
+      \strng{fullhash}{a2d93b1dcdb37edb991fb8775e7211e5}
+      \strng{bibnamehash}{a2d93b1dcdb37edb991fb8775e7211e5}
+      \strng{authorbibnamehash}{a2d93b1dcdb37edb991fb8775e7211e5}
+      \strng{authornamehash}{a2d93b1dcdb37edb991fb8775e7211e5}
+      \strng{authorfullhash}{a2d93b1dcdb37edb991fb8775e7211e5}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Fortune Investor’s Guide}
+      \field{title}{Warren Buffett on the stock market}
+      \field{year}{2001}
+      \field{pages}{80\bibrangedash 94}
+      \range{pages}{15}
+    \endentry
     \entry{Chat2018}{article}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=2a0eedc9bf06b97285877e502c0b61ab}{%
@@ -83,6 +193,387 @@
       \verb https://www.sciencedirect.com/science/article/pii/S0957417418303798
       \endverb
       \keyw{Stock market crashes,Forecasting,Random forests,Support vector machines,Deep learning,XGBoost}
+    \endentry
+    \entry{bond}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=0cee3ece4b02ab4e8a9dfc0c597e0549}{%
+           family={Connolly},
+           familyi={C\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f5f827923f3a8bdc2981f971a48ff498}{%
+           family={Stivers},
+           familyi={S\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=007119b05a66e7b91e9ba8612c52c142}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Licheng},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{810e1ffc679da10b86c6aabc29aa1fb8}
+      \strng{fullhash}{9f83f424fe246ede2d12a6f4dc3ab380}
+      \strng{bibnamehash}{9f83f424fe246ede2d12a6f4dc3ab380}
+      \strng{authorbibnamehash}{9f83f424fe246ede2d12a6f4dc3ab380}
+      \strng{authornamehash}{810e1ffc679da10b86c6aabc29aa1fb8}
+      \strng{authorfullhash}{9f83f424fe246ede2d12a6f4dc3ab380}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Financial and Quantitative Analysis}
+      \field{title}{Stock market uncertainty and the stock-bond return relation}
+      \field{year}{2005}
+      \field{pages}{161\bibrangedash 194}
+      \range{pages}{34}
+    \endentry
+    \entry{psychology}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=2d0948b394f537d9bfcd6053690aabdd}{%
+           family={Daniel},
+           familyi={D\bibinitperiod},
+           given={Kent},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8dae54e1e4ab0db00e73f56228fdded4}{%
+           family={Hirshleifer},
+           familyi={H\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=315ef5c7b5156dd3a1d71b3c727117fd}{%
+           family={Subrahmanyam},
+           familyi={S\bibinitperiod},
+           given={Avanidhar},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{6af626ea24cf7cc20288e50eadbc7bd7}
+      \strng{fullhash}{cef395b7cfdcba655d15aa92cc6a9627}
+      \strng{bibnamehash}{cef395b7cfdcba655d15aa92cc6a9627}
+      \strng{authorbibnamehash}{cef395b7cfdcba655d15aa92cc6a9627}
+      \strng{authornamehash}{6af626ea24cf7cc20288e50eadbc7bd7}
+      \strng{authorfullhash}{cef395b7cfdcba655d15aa92cc6a9627}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Behavioral Finance, Volume II}
+      \field{title}{Investor psychology and security market under-and overreaction}
+      \field{year}{2005}
+      \field{pages}{460\bibrangedash 501}
+      \range{pages}{42}
+    \endentry
+    \entry{inflation}{report}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e6510bac246693d0d3af1e55bb29f123}{%
+           family={Feldstein},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {National Bureau of Economic Research}%
+      }
+      \strng{namehash}{e6510bac246693d0d3af1e55bb29f123}
+      \strng{fullhash}{e6510bac246693d0d3af1e55bb29f123}
+      \strng{bibnamehash}{e6510bac246693d0d3af1e55bb29f123}
+      \strng{authorbibnamehash}{e6510bac246693d0d3af1e55bb29f123}
+      \strng{authornamehash}{e6510bac246693d0d3af1e55bb29f123}
+      \strng{authorfullhash}{e6510bac246693d0d3af1e55bb29f123}
+      \field{sortinit}{F}
+      \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper discusses a crucial cause of the failure of share prices to rise during a decade of substantial inflation. Indeed, the share value per dollar of pretax earnings actually fell from 10.82 in 1967 to 6.65 in 1976. The analysis here indicates that this inverse relation between higher inflation and lower share prices during the past decade was not due to chance or to other unrelated economic events. On the contrary, an important adverse effect of increased inflation on share prices results from basic features of the current U.S. tax laws, particularly historic cost depreciation and the taxation of nominal capital gains.}
+      \field{month}{08}
+      \field{number}{276}
+      \field{series}{Working Paper Series}
+      \field{title}{Inflation and the Stock Market}
+      \field{type}{Working Paper}
+      \field{year}{1978}
+      \verb{doi}
+      \verb 10.3386/w0276
+      \endverb
+      \verb{urlraw}
+      \verb http://www.nber.org/papers/w0276
+      \endverb
+      \verb{url}
+      \verb http://www.nber.org/papers/w0276
+      \endverb
+    \endentry
+    \entry{focal}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{un=1,uniquepart=given,hash=08f925fe4692d130a1d7cb7d94483351}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Tsung-Yi},
+           giveni={T\bibinithyphendelim Y\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=d87be7c19fa16049347907c9820816c6}{%
+           family={Goyal},
+           familyi={G\bibinitperiod},
+           given={Priya},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bd5dadbe57bedc5957c19a3154c4d424}{%
+           family={Girshick},
+           familyi={G\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ecd149fdcb3e0503881d49e545744c3d}{%
+           family={Doll{á}r},
+           familyi={D\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{fullhash}{4ccabcfdf9c34f3d9a88fdca5bb95dd5}
+      \strng{bibnamehash}{4ccabcfdf9c34f3d9a88fdca5bb95dd5}
+      \strng{authorbibnamehash}{4ccabcfdf9c34f3d9a88fdca5bb95dd5}
+      \strng{authornamehash}{3b7e00bc88d7aca4d4d5ddb8c252e36c}
+      \strng{authorfullhash}{4ccabcfdf9c34f3d9a88fdca5bb95dd5}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE international conference on computer vision}
+      \field{title}{Focal loss for dense object detection}
+      \field{year}{2017}
+      \field{pages}{2980\bibrangedash 2988}
+      \range{pages}{9}
+    \endentry
+    \entry{LinSurvey}{article}{}
+      \name{author}{3}{}{%
+        {{un=1,uniquepart=given,hash=2e439b19c8e4701f38fa84fbe494296c}{%
+           family={{Lin}},
+           familyi={L\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod},
+           givenun=1}}%
+        {{un=0,uniquepart=base,hash=abca94954939cb7608a6fa0b712c8a57}{%
+           family={{Hu}},
+           familyi={H\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1fb0394bdc77da2ae6ea92d3a61313de}{%
+           family={{Tsai}},
+           familyi={T\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{92ac6683f0771b15393dc6818896f1f5}
+      \strng{fullhash}{6500b00aa87762d4d93d70588ff19b7b}
+      \strng{bibnamehash}{6500b00aa87762d4d93d70588ff19b7b}
+      \strng{authorbibnamehash}{6500b00aa87762d4d93d70588ff19b7b}
+      \strng{authornamehash}{92ac6683f0771b15393dc6818896f1f5}
+      \strng{authorfullhash}{6500b00aa87762d4d93d70588ff19b7b}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews)}
+      \field{number}{4}
+      \field{title}{Machine Learning in Financial Crisis Prediction: A Survey}
+      \field{volume}{42}
+      \field{year}{2012}
+      \field{pages}{421\bibrangedash 436}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1109/TSMCC.2011.2170420
+      \endverb
+    \endentry
+    \entry{shillerPE}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=03b4ee342cff8bf8d8afb854b05af045}{%
+           family={multpl},
+           familyi={m\bibinitperiod}}}%
+      }
+      \strng{namehash}{03b4ee342cff8bf8d8afb854b05af045}
+      \strng{fullhash}{03b4ee342cff8bf8d8afb854b05af045}
+      \strng{bibnamehash}{03b4ee342cff8bf8d8afb854b05af045}
+      \strng{authorbibnamehash}{03b4ee342cff8bf8d8afb854b05af045}
+      \strng{authornamehash}{03b4ee342cff8bf8d8afb854b05af045}
+      \strng{authorfullhash}{03b4ee342cff8bf8d8afb854b05af045}
+      \field{sortinit}{m}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.multpl.com/shiller-pe}}
+      \field{note}{(Accessed on 04/17/2021)}
+      \field{title}{Shiller PE Ratio}
+    \endentry
+    \entry{lstm}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=dea937fb216bfbba25c1bfa1f36a63fe}{%
+           family={Olah},
+           familyi={O\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{dea937fb216bfbba25c1bfa1f36a63fe}
+      \strng{fullhash}{dea937fb216bfbba25c1bfa1f36a63fe}
+      \strng{bibnamehash}{dea937fb216bfbba25c1bfa1f36a63fe}
+      \strng{authorbibnamehash}{dea937fb216bfbba25c1bfa1f36a63fe}
+      \strng{authornamehash}{dea937fb216bfbba25c1bfa1f36a63fe}
+      \strng{authorfullhash}{dea937fb216bfbba25c1bfa1f36a63fe}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Understanding LSTM Networks}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+      \endverb
+      \verb{url}
+      \verb http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+      \endverb
+    \endentry
+    \entry{shiller2015IE}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2c8da582bc3255fb10497c14abc2e4b4}{%
+           family={Shiller},
+           familyi={S\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{2c8da582bc3255fb10497c14abc2e4b4}
+      \strng{fullhash}{2c8da582bc3255fb10497c14abc2e4b4}
+      \strng{bibnamehash}{2c8da582bc3255fb10497c14abc2e4b4}
+      \strng{authorbibnamehash}{2c8da582bc3255fb10497c14abc2e4b4}
+      \strng{authornamehash}{2c8da582bc3255fb10497c14abc2e4b4}
+      \strng{authorfullhash}{2c8da582bc3255fb10497c14abc2e4b4}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this revised, updated, and expanded edition of his New York Times bestseller, Nobel Prize–winning economist Robert Shiller, who warned of both the tech and housing bubbles, now cautions that signs of irrational exuberance among investors have only increased since the 2008–9 financial crisis. With high stock and bond prices in the United States, and rising housing prices in many countries, the post-subprime boom may well turn out to be another illustration of Shiller’s influential argument that psychologically driven volatility is an inherent characteristic of all asset markets. In other words, Irrational Exuberance is as relevant as ever. But Irrational Exuberance is about something far more important than the current situation in any given market because the book explains the forces that move all markets up and down. It shows how investor euphoria can drive asset prices up to dizzying and unsustainable heights, and how, at other times, investor discouragement can push prices down to very low levels. Previous editions covered the stock and housing markets—and famously predicted their crashes. This new edition expands its coverage to include the bond market, so that the book now addresses all of the major investment markets. This edition also includes updated data throughout, as well as Shiller’s 2013 Nobel Prize lecture, which puts the book in broader context. In addition to diagnosing the causes of asset bubbles, Irrational Exuberance recommends urgent policy changes to lessen their likelihood and severity—and suggests ways that individuals can decrease their risk before the next bubble bursts. No one whose future depends on a retirement account, a house, or other investments can afford not to read it. For more information, including new developments and regular data updates, please go to www.irrationalexuberance.com}
+      \field{edition}{3}
+      \field{title}{Irrational Exuberance}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://EconPapers.repec.org/RePEc:pup:pbooks:10421
+      \endverb
+      \verb{url}
+      \verb https://EconPapers.repec.org/RePEc:pup:pbooks:10421
+      \endverb
+      \keyw{Nobel; tech; housing; bubble; irrational; exuberance; invest; investor; crisis; financial; stock; bond; price; rising; housing; post-subprime; subprime; boom; psychological; psychology; volatility; volatile; asset; market; forces; market; euphoria; height; unsustainable; crash; predict; policy; risk; future; retirement; investment; data}
+    \endentry
+    \entry{Siam2019}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=379b300ed9cd8f9d0f239adb607eb674}{%
+           family={Siami-Namini},
+           familyi={S\bibinithyphendelim N\bibinitperiod},
+           given={Sima},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e3e53622236d9f272d40b6c71a23b3c5}{%
+           family={Tavakoli},
+           familyi={T\bibinitperiod},
+           given={Neda},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c227cf94db6389a4c92e6af9d888c29}{%
+           family={Namin},
+           familyi={N\bibinitperiod},
+           given={Akbar\bibnamedelima Siami},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{bc6b48a0b5b2fdba8b9e6fa999375f24}
+      \strng{fullhash}{ed490c5c48a7abeaa43317a87bbf185a}
+      \strng{bibnamehash}{ed490c5c48a7abeaa43317a87bbf185a}
+      \strng{authorbibnamehash}{ed490c5c48a7abeaa43317a87bbf185a}
+      \strng{authornamehash}{bc6b48a0b5b2fdba8b9e6fa999375f24}
+      \strng{authorfullhash}{ed490c5c48a7abeaa43317a87bbf185a}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{A Comparative Analysis of Forecasting Financial Time Series Using ARIMA, LSTM, and BiLSTM}
+      \field{volume}{abs/1911.09512}
+      \field{year}{2019}
+    \endentry
+    \entry{blackswan}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=97221c67145aabda05afac891300d180}{%
+           family={Taleb},
+           familyi={T\bibinitperiod},
+           given={Nassim\bibnamedelima Nicholas},
+           giveni={N\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Random house}%
+      }
+      \strng{namehash}{97221c67145aabda05afac891300d180}
+      \strng{fullhash}{97221c67145aabda05afac891300d180}
+      \strng{bibnamehash}{97221c67145aabda05afac891300d180}
+      \strng{authorbibnamehash}{97221c67145aabda05afac891300d180}
+      \strng{authornamehash}{97221c67145aabda05afac891300d180}
+      \strng{authorfullhash}{97221c67145aabda05afac891300d180}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The black swan: The impact of the highly improbable}
+      \field{volume}{2}
+      \field{year}{2007}
     \endentry
   \enddatalist
 \endrefsection

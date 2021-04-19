@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.16)  19 APR 2021 09:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.16)  19 APR 2021 06:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -936,7 +936,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 26.
 LaTeX Info: Redefining \pageref on input line 26.
 LaTeX Info: Redefining \nameref on input line 26.
- (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out) (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out)
 \@outlinefile=\write7
 \openout7 = `thesis.out'.
 
@@ -972,14 +971,48 @@ Package biblatex Info: Automatic encoding selection.
 \openout6 = `thesis.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'thesis.bbl' found.
- (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.bbl)
+Package biblatex Info: ... file 'thesis.bbl' not found.
+
+No file thesis.bbl.
 Package biblatex Info: Reference section=0 on input line 26.
 Package biblatex Info: Reference segment=0 on input line 26.
 Class apa7 Info: Keywords not defined on input line 30.
- [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+[1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] [4] [5] [6] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_features.tex
+] [2]
+
+LaTeX Warning: Citation 'blackswan' on page 3 undefined on input line 34.
+
+
+LaTeX Warning: Citation 'shiller2015IE' on page 3 undefined on input line 42.
+
+
+LaTeX Warning: Citation 'Chat2018' on page 3 undefined on input line 42.
+
+[3] [4] [5]
+
+LaTeX Warning: Citation 'inflation' on page 6 undefined on input line 63.
+
+
+LaTeX Warning: Citation 'bond' on page 6 undefined on input line 65.
+
+
+LaTeX Warning: Citation 'psychology' on page 6 undefined on input line 69.
+
+[6]
+
+LaTeX Warning: Citation 'shiller2015IE' on page 7 undefined on input line 71.
+
+
+LaTeX Warning: Citation 'shillerPE' on page 7 undefined on input line 71.
+
+
+LaTeX Warning: Citation 'buffett' on page 7 undefined on input line 73.
+
+
+LaTeX Warning: Reference `tab:features' on page 7 undefined on input line 75.
+
+(/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_features.tex
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1009,63 +1042,171 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)) [7] [8] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_imbalance.tex)
-<../figures/bubble_def.png, id=178, 3742.98375pt x 2864.7025pt>
+)) [7]
+
+LaTeX Warning: Citation 'Chat2018' on page 8 undefined on input line 83.
+
+
+LaTeX Warning: Reference `tab:imbalance' on page 8 undefined on input line 89.
+
+
+LaTeX Warning: Reference `fig:bubble_def' on page 8 undefined on input line 91.
+
+[8] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_imbalance.tex)
+<../figures/bubble_def.png, id=62, 3742.98375pt x 2864.7025pt>
 File: ../figures/bubble_def.png Graphic file (type png)
 <use ../figures/bubble_def.png>
 Package pdftex.def Info: ../figures/bubble_def.png  used on input line 99.
 (pdftex.def)             Requested size: 426.79134pt x 326.61446pt.
- [9] [10 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/bubble_def.png>] [11] [12] [13] [14] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_res.tex) [15]
-<../figures/cv_threshold.png, id=242, 3742.98375pt x 2864.7025pt>
+
+
+LaTeX Warning: Reference `eq:logit' on page 9 undefined on input line 115.
+
+[9]
+
+LaTeX Warning: Citation 'LinSurvey' on page 10 undefined on input line 126.
+
+[10 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/bubble_def.png>]
+
+LaTeX Warning: Citation 'lstm' on page 11 undefined on input line 130.
+
+
+LaTeX Warning: Citation 'Bash2020' on page 11 undefined on input line 130.
+
+
+LaTeX Warning: Citation 'Siam2019' on page 11 undefined on input line 132.
+
+
+LaTeX Warning: Citation 'Bash2020' on page 11 undefined on input line 132.
+
+[11]
+
+LaTeX Warning: Reference `tab:imbalance' on page 12 undefined on input line 136.
+
+[12] [13]
+
+LaTeX Warning: Reference `eq:entropy' on page 14 undefined on input line 158.
+
+
+LaTeX Warning: Citation 'focal' on page 14 undefined on input line 165.
+
+
+LaTeX Warning: Reference `eq:focal' on page 14 undefined on input line 165.
+
+
+LaTeX Warning: Reference `eq:ba' on page 14 undefined on input line 174.
+
+[14]
+
+LaTeX Warning: Reference `tab:res' on page 15 undefined on input line 189.
+
+(/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_res.tex)
+
+LaTeX Warning: Reference `fig:cv_threshold' on page 15 undefined on input line 195.
+
+
+LaTeX Warning: Reference `fig:rfcv_full' on page 15 undefined on input line 195.
+
+
+LaTeX Warning: Reference `fig:cv_threshold' on page 15 undefined on input line 195.
+
+
+LaTeX Warning: Reference `fig:rfcv_full' on page 15 undefined on input line 195.
+
+[15]
+<../figures/cv_threshold.png, id=118, 3742.98375pt x 2864.7025pt>
 File: ../figures/cv_threshold.png Graphic file (type png)
 <use ../figures/cv_threshold.png>
 Package pdftex.def Info: ../figures/cv_threshold.png  used on input line 201.
 (pdftex.def)             Requested size: 426.79134pt x 326.61446pt.
-<../figures/rfcv_full.png, id=243, 3742.98375pt x 2864.7025pt>
+<../figures/rfcv_full.png, id=119, 3742.98375pt x 2864.7025pt>
 File: ../figures/rfcv_full.png Graphic file (type png)
 <use ../figures/rfcv_full.png>
 Package pdftex.def Info: ../figures/rfcv_full.png  used on input line 208.
 (pdftex.def)             Requested size: 426.79134pt x 326.61446pt.
  [16 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/cv_threshold.png>]
-<../figures/varImp.png, id=252, 481.8pt x 481.8pt>
+
+LaTeX Warning: Reference `fig:varImp' on page 17 undefined on input line 218.
+
+<../figures/varImp.png, id=126, 481.8pt x 481.8pt>
 File: ../figures/varImp.png Graphic file (type png)
 <use ../figures/varImp.png>
 Package pdftex.def Info: ../figures/varImp.png  used on input line 223.
 (pdftex.def)             Requested size: 426.79134pt x 426.801pt.
- [17 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/rfcv_full.png>] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_logitRW.tex) [18 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/varImp.png>] [19] [20]
-<../figures/rnn.png, id=279, 3742.98375pt x 2864.7025pt>
+
+LaTeX Warning: Reference `tab:logit' on page 17 undefined on input line 227.
+
+[17 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/rfcv_full.png>] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_logitRW.tex) [18 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/varImp.png>] [19]
+
+LaTeX Warning: Reference `tab:res' on page 20 undefined on input line 238.
+
+
+LaTeX Warning: Reference `fig:rnn' on page 20 undefined on input line 246.
+
+
+LaTeX Warning: Citation 'datasize' on page 20 undefined on input line 246.
+
+[20]
+<../figures/rnn.png, id=154, 3742.98375pt x 2864.7025pt>
 File: ../figures/rnn.png Graphic file (type png)
 <use ../figures/rnn.png>
 Package pdftex.def Info: ../figures/rnn.png  used on input line 251.
 (pdftex.def)             Requested size: 426.79134pt x 326.61446pt.
- [21 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/rnn.png>] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_rob.tex) [22] (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_cfm.tex) [23] [24] [25] AED endfloat: Processing end Figures and Tables [26
+ [21 </Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/../figures/rnn.png>]
 
+LaTeX Warning: Reference `tab:rob' on page 22 undefined on input line 260.
 
-]
+(/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_rob.tex) [22]
+
+LaTeX Warning: Reference `tab:cfm' on page 23 undefined on input line 274.
+
+(/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/tab_cfm.tex) [23] [24] [25]
+
+LaTeX Warning: Empty bibliography on input line 293.
+
+AED endfloat: Processing end Figures and Tables
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 295.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 295.
  (/Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 295.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 295.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 05F708676112CD26F595CA581233FD98;1555.
+
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  05F708676112CD26F595CA581233FD98;1555.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                thesis
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28183 strings out of 480608
- 531953 string characters out of 5903630
- 1262974 words of memory out of 5000000
- 43469 multiletter control sequences out of 15000+600000
+ 28047 strings out of 480608
+ 528456 string characters out of 5903630
+ 1260137 words of memory out of 5000000
+ 43355 multiletter control sequences out of 15000+600000
  576208 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,12n,68p,2191b,4720s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,12n,68p,1333b,4720s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.pdf (26 pages, 1223267 bytes).
+Output written on /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.pdf (25 pages, 1212886 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 329 compressed objects within 4 object streams
- 89 named destinations out of 1000 (max. 500000)
- 238 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 241 PDF objects out of 1000 (max. 8388607)
+ 192 compressed objects within 2 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

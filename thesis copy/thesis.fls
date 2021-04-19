@@ -269,14 +269,8 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
-OUTPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.pdf
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
 OUTPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.out
+OUTPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.pdf
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/biblatex-apa/english-apa.lbx
@@ -290,9 +284,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/biblatex/lbx/american.lbx
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 OUTPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.bcf
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.bbl
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.bbl
-INPUT /Users/Hongkai_Yu/Documents/PersonalProjects/EquityBubbleDetection/thesis/thesis.bbl
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT /usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm

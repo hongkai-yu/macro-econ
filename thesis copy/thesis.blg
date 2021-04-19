@@ -1,0 +1,11 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'thesis.blg'
+[58] biber-darwin:322> INFO - === Mon Apr 19, 2021, 06:00:46
+[71] Biber.pm:415> INFO - Reading 'thesis.bcf'
+[166] Biber.pm:943> INFO - Found 14 citekeys in bib section 0
+[178] Biber.pm:4256> INFO - Processing section 0
+[178] Utils.pm:75> INFO - Globbing data source 'references.bib'
+[178] Utils.pm:91> INFO - Globbed data source 'references.bib' to references.bib
+[187] Biber.pm:4455> INFO - Looking for bibtex format file 'references.bib' for section 0
+[188] bibtex.pm:1653> INFO - LaTeX decoding ...
+[216] bibtex.pm:1471> INFO - Found BibTeX data source 'references.bib'

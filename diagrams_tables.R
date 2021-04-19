@@ -26,12 +26,14 @@ xtable(tab.res, label = 'tab:res', caption = 'The peformance of models') %>%
 df %>% 
   select(-bubble, -Date) %>%
   tableContinuous(cap = 'Summary of features', lab = 'tab:features', 
-                  stats = list('min', 'q1', 'median', 'q3', 'max', 'mean')) %>% 
+                  stats = list('min', 'q1', 'median', 'q3', 'max', 'mean'),
+                  longtable = FALSE, font.size = 'normalsize') %>% 
   capture.output(file = './thesis/tab_features.tex')
 
 # Imbalance bubble (output variables summary)
 df %>% select(bubble) %>% 
-  tableNominal(cap = 'Bubble distribution', lab = 'tab:imbalance') %>% 
+  tableNominal(cap = 'Bubble distribution', lab = 'tab:imbalance',
+               longtable = FALSE, font.size = 'normalsize') %>% 
   capture.output(file = './thesis/tab_imbalance.tex')
   
 # plot theme
@@ -124,7 +126,11 @@ ggsave('./figures/rnn.png')
 
 
 # robustness analysis
-
 xtable(tab.rob, label = 'tab:rob', 
        caption = 'Balanced accuracy of RF-CV with different quantiles (column) and periods (row)') %>% 
   print(file = './thesis/tab_rob.tex')
+
+# cfm
+xtable(rf.cv.cfm$table, label = 'tab:cfm',
+       caption = 'Confusion matrix of the RF-CV model, reference(columns) and prediction(rows)') %>% 
+  print(file = './thesis/tab_cfm.tex')

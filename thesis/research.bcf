@@ -2789,23 +2789,6 @@
     <bcf:datasource type="file" datatype="bibtex">references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">blackswan</bcf:citekey>
-    <bcf:citekey order="2">shiller2015IE</bcf:citekey>
-    <bcf:citekey order="3">Chat2018</bcf:citekey>
-    <bcf:citekey order="4">inflation</bcf:citekey>
-    <bcf:citekey order="5">bond</bcf:citekey>
-    <bcf:citekey order="6">psychology</bcf:citekey>
-    <bcf:citekey order="7">shiller2015IE</bcf:citekey>
-    <bcf:citekey order="8">shillerPE</bcf:citekey>
-    <bcf:citekey order="9">buffett</bcf:citekey>
-    <bcf:citekey order="10">Chat2018</bcf:citekey>
-    <bcf:citekey order="11">LinSurvey</bcf:citekey>
-    <bcf:citekey order="12">lstm</bcf:citekey>
-    <bcf:citekey order="13">Bash2020</bcf:citekey>
-    <bcf:citekey order="14">Siam2019</bcf:citekey>
-    <bcf:citekey order="15">Bash2020</bcf:citekey>
-    <bcf:citekey order="16">focal</bcf:citekey>
-    <bcf:citekey order="17">datasize</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">
@@ -2841,13 +2824,4 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="apa/global//global/global"
-                type="entry"
-                sortingtemplatename="apa"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
 </bcf:controlfile>
