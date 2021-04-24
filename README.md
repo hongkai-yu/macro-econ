@@ -6,11 +6,11 @@ In this research, I aim to detect equity bubbles and predict financial crashes i
 # Contents
 
 - Research presentation slides are in _ECON 490 Research Slides_. The full paper is _Thesis.pdf_.
-- The .R files are source code of the research except for the RNN analysis. The RNN analysis in _RNN.ipynb_.
-- In the data folder,
+- The .R files are source code of the research except for the RNN analysis. The RNN analysis is in _RNN.ipynb_.
+- In _data_ folder,
   - bubble_detection.csv is the full data after data transformation and processing
   - dataset.md records the details of raw data in the folder
   - other .csv files are raw data for the research
   - Notice: much of the data are directly retrieved from the the web via R API, please see _prepareData.R_ for details
-- The figures folder contains figures for illustrative use.
-- The thesis folder contains the LaTeX code for the thesis and LaTeX tables.
+- The _figures_ folder contains figures for illustrative use.
+- The _thesis_ folder contains the LaTeX code for the thesis and LaTeX tables.
