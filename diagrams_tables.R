@@ -3,8 +3,24 @@ library(stargazer)
 library(xtable)
 library(Hmisc)
 library(reporttools)
+library(janitor)
+library(ggrepel)
 
-
+df_display = df %>% 
+  rename('10-year T-bill yield (\\%)' = tbill_yield,
+         'Annualized GDP Growth Rate (\\%)' = real_gdp_growth,
+         'Annualized Inflation (\\%)' = inflation,
+         'Shiller P/E Ratio' = shiller_pe,
+         'Consumer Confidence Index' = consumer_confidence,
+         'Market Capitalization-to-GDP Ratio' = mktcap_gdp_ratio,
+         '1-Month S\\&P 500 Return (\\%)' = sp500_return,
+         '3-Month S\\&P 500 Return (\\%)' = sp500_re3,
+         '6-Month S\\&P 500 Return (\\%)' = sp500_re6,
+         '12-Month S\\&P 500 Return (\\%)' = sp500_re12,
+         '60-Month S\\&P 500 Return (\\%)' = sp500_re60,
+         'Bubble' = 'bubble'
+         )
+  names
 
 # result table
 Model = c('Logit-P', 'Logit-RW', 'RF-CV', 'RF-RW', 'RNN-BiLSTM-focal')
@@ -23,15 +39,15 @@ xtable(tab.res, label = 'tab:res', caption = 'The peformance of models') %>%
   print(file = './thesis/tab_res.tex')
 
 # input variables summary
-df %>% 
-  select(-bubble, -Date) %>%
+df_display %>% 
+  select(-Bubble, -Date) %>%
   tableContinuous(cap = 'Summary of features', lab = 'tab:features', 
-                  stats = list('min', 'q1', 'median', 'q3', 'max', 'mean'),
+                  stats = list('min', 'q1', 'median', 'q3', 'max', 'mean', 's'),
                   longtable = FALSE, font.size = 'normalsize') %>% 
   capture.output(file = './thesis/tab_features.tex')
 
 # Imbalance bubble (output variables summary)
-df %>% select(bubble) %>% 
+df_display %>% select(Bubble) %>% 
   tableNominal(cap = 'Bubble distribution', lab = 'tab:imbalance',
                longtable = FALSE, font.size = 'normalsize') %>% 
   capture.output(file = './thesis/tab_imbalance.tex')
@@ -124,13 +140,34 @@ rnn %>%
   th
 ggsave('./figures/rnn.png')
 
+# result graph
+tab.res %>% data.frame %>% 
+  mutate(Specificity = as.numeric(Specificity),
+         Sensitivity = as.numeric(Sensitivity)) %>% 
+  ggplot(aes(x = Sensitivity, y = Specificity)) +
+  geom_point(size = 10, shape = 18, alpha = 0.8) +
+  scale_x_continuous(breaks = seq(0, 1, 0.2), limits = c(0, 1)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2), limits = c(0, 1)) + 
+  geom_label_repel(label = Model, size = 5) +
+  labs(title = 'Sensitivity and Specificity by Model') +
+  th
+ggsave('./figures/res.png')
 
 # robustness analysis
+colnames(tab.rob) = c('0.5 percentile', '1 percentile', '1.5 percentile', '5 percentile')
+rownames(tab.rob) = c('3 months', '4 months', '6 months', '7 months', '12 months')
 xtable(tab.rob, label = 'tab:rob', 
-       caption = 'Balanced accuracy of RF-CV with different quantiles (column) and periods (row)') %>% 
+       caption = 'Balanced accuracy of RF-CV with different percentiles and periods') %>% 
   print(file = './thesis/tab_rob.tex')
 
 # cfm
 xtable(rf.cv.cfm$table, label = 'tab:cfm',
        caption = 'Confusion matrix of the RF-CV model, reference(columns) and prediction(rows)') %>% 
   print(file = './thesis/tab_cfm.tex')
+
+# overfit 
+1 - (rf.out$confusion[1,3] + rf.out$confusion[2,3]) / 2
+rf.cv.cfm$byClass[11]
+1 - (rf_balance.out$confusion[1,3] + rf_balance.out$confusion[2,3]) / 2
+rf.rw.cfm$byClass[11]
+
