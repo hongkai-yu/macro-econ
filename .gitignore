@@ -48,4 +48,7 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
+.idea/
 .DS_Store
+data/.DS_Store
+data/processed/
