@@ -13,8 +13,8 @@ df$bubble = as.factor(df$bubble)
 set.seed(20210324)
 train_rate = 0.8
 train_label = sample.int(n = nrow(df), size = floor(train_rate * nrow(df)), replace = F)
-df_train = df[train_label, ]
-df_test = df[-train_label, ]
+df_train = df[train_label,]
+df_test = df[-train_label,]
 
 # the data set is imbalance
 prevalence = nrow(df_train %>% filter(bubble == 1)) / nrow(df_train)
@@ -27,8 +27,8 @@ df_train_balanced = bind_rows(df_train, df_train_bubble[rep(seq_len(nrow(df_trai
 summary(df_train_balanced$bubble)
 
 # Logistic regression, threshold as prevalence
-logit.out = glm(bubble ~ .-Date, data = df_train,
-             family = binomial(link = 'logit'))
+logit.out = glm(bubble ~ . - Date, data = df_train,
+                family = binomial(link = 'logit'))
 summary(logit.out)
 
 df_test$logit.test = predict(logit.out, newdata = df_test, type = 'response')
@@ -49,11 +49,11 @@ logit.p.cfm = confusionMatrix(as.factor(ifelse(df_test$logit.test_decision == 1,
 
 # Random Forest, CV-tuned cutoff
 cv_threshold = function(threshold) {
-  rf.out = randomForest(bubble ~ .-Date, data = df_train,
+  rf.out = randomForest(bubble ~ . - Date, data = df_train,
                         cutoff = c(1 - threshold, threshold))
-  
+
   cfm_train = rf.out$confusion
-  (cfm_train[1,3] + cfm_train[2,3]) / 2
+  (cfm_train[1, 3] + cfm_train[2, 3]) / 2
 }
 
 thresholds = seq(from = 0.01, to = 0.5, by = 0.01)
@@ -68,7 +68,7 @@ threshold
 
 plot(thresholds, balanced_error, type = 'l')
 
-rf.out = randomForest(bubble ~ .-Date, data = df_train, importance = TRUE,
+rf.out = randomForest(bubble ~ . - Date, data = df_train, importance = TRUE,
                       cutoff = c(1 - threshold, threshold))
 rf$confusion
 
@@ -78,7 +78,7 @@ rf.cv.cfm = confusionMatrix(as.factor(ifelse(df_test$rf.test == 1, 'bubble', 'no
                             as.factor(ifelse(df_test$bubble == 1, 'bubble', 'non-bubble')))
 
 # Random Forest, Balanced data set
-rf_balance.out = randomForest(bubble ~ .-Date, data = df_train_balanced, importance = TRUE)
+rf_balance.out = randomForest(bubble ~ . - Date, data = df_train_balanced, importance = TRUE)
 rf_balance.out$confusion
 
 df_test$rf_balance.test = predict(rf_balance.out, newdata = df_test, type = 'response')
@@ -86,7 +86,7 @@ rf.rw.cfm = confusionMatrix(as.factor(ifelse(df_test$rf_balance.test == 1, 'bubb
                             as.factor(ifelse(df_test$bubble == 1, 'bubble', 'non-bubble')))
 
 # Logistic regression, balanced
-logit_balance.out = glm(bubble ~ .-Date, data = df_train_balanced, family = binomial(link = 'logit'))
+logit_balance.out = glm(bubble ~ . - Date, data = df_train_balanced, family = binomial(link = 'logit'))
 summary(logit_balance.out)
 
 df_test$logit_balance.test = predict(logit_balance.out, newdata = df_test, type = 'response')
