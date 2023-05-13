@@ -4,6 +4,27 @@ library(Quandl)
 library(lubridate)
 
 shiller = read_csv('data/processed/shiller_pe.csv', col_types = cols(date = col_date(format = "%Y/%m")))
+maddison_gdp = read_csv('data/processed/maddison_gdp.csv', col_types = cols(year = col_integer())) %>%
+  filter(country == 'United States')
+
+bft_indicator = shiller %>%
+  group_by(year = year(date)) %>%
+  summarize(sp_price = mean(sp_price)) %>%
+  inner_join(maddison_gdp %>% select("year", "gdp"), by = c("year" = "year")) %>%
+  mutate(bft_indicator = sp_price / gdp)
+
+bft_indicator %>% ggplot(aes(x = year, y = bft_indicator)) +
+  geom_line() +
+  # geom_hline(yintercept = 1, linetype = 'dashed') +
+  labs(title = "BFT Indicator", x = "Year", y = "BFT Indicator") +
+  theme_bw()
+
+shiller %>% ggplot(aes(x = date, y = real_earnings)) +
+  geom_line() +
+  labs(title = "S&P 500 Price", x = "Year", y = "Price") +
+  theme_bw()
+
+
 shiller$sp_price %>% plot(type = 'l')
 
 sp500 %>%
