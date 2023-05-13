@@ -16,7 +16,7 @@ def read_raw() -> pd.DataFrame:
 
 
 def process_raw(df: pd.DataFrame, save_processed: bool = False) -> pd.DataFrame:
-    df = df.iloc[1:len(df)]
+    df = df.iloc[1:len(df)].copy()
     headers = ["year", "price"]
     df.columns = headers
     df["year"] = df["year"].astype(str).str.replace('*', '').astype(int)

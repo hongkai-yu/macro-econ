@@ -11,7 +11,7 @@ def download_file(url, save_path):
     if response.status_code == 200:
         with open(save_path, 'wb') as file:
             file.write(response.content)
-        print("File downloaded successfully.")
+        print(f"File downloaded to {save_path}.")
     else:
         print("Failed to download the file.")
 
