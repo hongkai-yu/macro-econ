@@ -1,8 +1,8 @@
 import pandas as pd
-from python.util import download_file, PROJECT_FOLDER, extract_tables_from_pdf
+from python.util import download_file, DATA_FOLDER, extract_tables_from_pdf
 
-raw_path = f"{PROJECT_FOLDER}/data/raw/historical_gold_prices.pdf"
-processed_path = f"{PROJECT_FOLDER}/data/processed/historical_gold_prices.csv"
+raw_path = f"{DATA_FOLDER}/raw/historical_gold_prices.pdf"
+processed_path = f"{DATA_FOLDER}/processed/historical_gold_prices.csv"
 
 
 def download_raw():

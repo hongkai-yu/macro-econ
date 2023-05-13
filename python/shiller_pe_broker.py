@@ -1,8 +1,8 @@
 import pandas as pd
-from python.util import download_file, PROJECT_FOLDER
+from python.util import download_file, DATA_FOLDER
 
-raw_path = f"{PROJECT_FOLDER}/data/raw/shiller_pe.xls"
-processed_path = f"{PROJECT_FOLDER}/data/processed/shiller_pe.csv"
+raw_path = f"{DATA_FOLDER}/raw/shiller_pe.xls"
+processed_path = f"{DATA_FOLDER}/processed/shiller_pe.csv"
 
 
 def download_raw():

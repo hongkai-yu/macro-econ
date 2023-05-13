@@ -3,7 +3,7 @@ import requests
 import tabula
 
 
-PROJECT_FOLDER = "/Users/hongkaiyu/Developer/macro-econ"
+DATA_FOLDER = "/Users/hongkaiyu/Developer/macro-econ/data"
 
 
 def download_file(url, save_path):
