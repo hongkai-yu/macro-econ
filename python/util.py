@@ -4,6 +4,7 @@ import tabula
 
 
 DATA_FOLDER = "/Users/hongkaiyu/Developer/macro-econ/data"
+ALPHA_VANTAGE_API_KEY = "FOV3O9E0RC8GJOHU"
 
 
 def download_file(url, save_path):
