@@ -39,72 +39,93 @@ all_real_gdp = maddison_gdp %>%
 
 
 # 2. Shiller PE
-shiller_quarterly = monthly2quarterly(shiller, c("real_price", "cpi", "gs10", "total_cape")) %>%
+shiller_quarterly = shiller %>%
+    group_by(year = year(date), quarter = quarter(date)) %>%
+    summarize(across(all_of(c("cpi", "gs10", "total_cape")), mean),
+              across(all_of("real_price"), last)) %>%
+    ungroup() %>%
+    mutate(date = make_quarter_date(year, quarter)) %>%
+    select(date, everything()) %>%
     filter(year >= START_YEAR - 10)
 
 cleaned_data = shiller_quarterly %>%
     inner_join(all_real_gdp, by = c("date" = "date"))
 
 # III. Create features and the label
-features_attached_data = cleaned_data %>%
+features_data = cleaned_data %>%
     mutate(bft_indicator = real_price / real_gdp) %>%
-    mutate(across(all_of(c("cpi", "real_gdp")), list(d_1y=~ .x / lag(.x, 4) - 1))) %>% # calculate yearly change in gdp and cpi
+    mutate(across(all_of(c("cpi", "real_gdp")), list(d_1y = ~.x / lag(.x, 4) - 1))) %>% # calculate yearly change in gdp and cpi
     mutate(across(all_of("real_price"), list(   # difference between current and previous year
-        d_3m=~ .x / lag(.x, 1) - 1,
-        d_6m=~ .x / lag(.x, 2) - 1,
-        d_1y=~ .x / lag(.x, 4) - 1,
-        d_5y=~ .x / lag(.x, 20) - 1
-    )))
-
-labelled_data = features_attached_data %>%
+        d_3m = ~.x / lag(.x, 1) - 1,
+        d_6m = ~.x / lag(.x, 2) - 1,
+        d_1y = ~.x / lag(.x, 4) - 1,
+        d_5y = ~.x / lag(.x, 20) - 1
+    ))) %>%
     mutate(across(all_of("real_price"), list(
-        f_3m=~ lead(.x, 1) / .x - 1,
-        f_6m=~ lead(.x, 2) / .x - 1
-    )))
+        f_3m = ~lead(.x, 1) / .x - 1,
+        f_6m = ~lead(.x, 2) / .x - 1,
+        f_1y = ~lead(.x, 4) / .x - 1
+    ))) %>%
+    filter(year >= START_YEAR)
 
-processed_data = labelled_data %>% filter(year >= START_YEAR)
-processed_data %>% View
+
+quantile_level = 0.1
+threshold_3m = quantile(features_data$real_price_d_3m, quantile_level)
+threshold_6m = quantile(features_data$real_price_d_6m, quantile_level)
+threshold_1y = quantile(features_data$real_price_d_1y, quantile_level)
+
+labelled_data = features_data %>%
+    mutate(bubble = ifelse(
+        (real_price_f_3m < threshold_3m) |
+            (real_price_f_6m < threshold_6m) |
+            (real_price_f_1y < threshold_1y),
+        1, 0)
+    )
+
+labelled_data %>%
+    write_csv(glue('{DATA_FOLDER}/processed/labelled_data.csv'))
+
+labelled_data %>%
+    select(-date, -bubble) %>%
+    cor(use = "complete.obs") %>%
+    corrplot::corrplot(method = "number")
+
+################################################## EXPLORATORY ANALYSIS ##################################################
+
+labelled_data = read_csv(glue('{DATA_FOLDER}/processed/labelled_data.csv'))
+# fit random forest
+library(randomForest)
+library(corrplot)
+
+
+rf = randomForest(bubble ~ ., data = labelled_data, importance = TRUE, ntree = 1000)
+varImpPlot(rf)
+
+
 # IV. Plot data
-processed_data %>%
+labelled_data %>%
     ggplot(aes(x = date, y = real_price)) +
     geom_line() +
+    geom_vline(xintercept = labelled_data$date[labelled_data$bubble == 1], color = "red", linetype = "dashed") +
     labs(title = "S&P 500 Price", x = "Year", y = "Price") +
     theme_bw()
 
-processed_data %>%
+labelled_data %>%
     ggplot(aes(x = date, y = bft_indicator)) +
     geom_line() +
     labs(title = "BFT Indicator", x = "Year", y = "BFT Indicator") +
     theme_bw()
 
-processed_data %>%
+labelled_data %>%
     ggplot(aes(x = date, y = total_cape)) +
     geom_line() +
     labs(title = "Shiller PE", x = "Year", y = "Shiller PE") +
     theme_bw()
 
-processed_data %>%
+labelled_data %>%
     ggplot(aes(x = date, y = real_gdp)) +
     geom_line() +
     labs(title = "Real GDP", x = "Year", y = "Real GDP") +
-    theme_bw()
-
-
-bft_indicator = shiller %>%
-    group_by(year = year(date)) %>%
-    summarize(sp_price = mean(sp_price)) %>%
-    inner_join(maddison_gdp %>% select("year", "gdp"), by = c("year" = "year")) %>%
-
-    bft_indicator %>%
-    ggplot(aes(x = year, y = bft_indicator)) +
-    geom_line() +
-    # geom_hline(yintercept = 1, linetype = 'dashed') +
-    labs(title = "BFT Indicator", x = "Year", y = "BFT Indicator") +
-    theme_bw()
-
-shiller %>% ggplot(aes(x = date, y = real_earnings)) +
-    geom_line() +
-    labs(title = "S&P 500 Price", x = "Year", y = "Price") +
     theme_bw()
 
 
@@ -145,60 +166,6 @@ quarterly2monthly = function(data) {
         return
 }
 
-# III. Output data
-
-# 1. real GDP growth rate, with monthly expansion
-real_gdp_growth = real_gdp %>%
-    calculate_growth_rate(4) %>%
-    quarterly2monthly %>%
-    rename(real_gdp_growth = Percent) %>%
-    filter(Date >= '1960-01-01')
-plot(real_gdp_growth, type = 'l')
-summary(real_gdp_growth %>%
-            filter(Date >= '1960-01-01') %>%
-            .[, 2])
-
-# 2. Inflation rate
-inflation = cpi %>%
-    calculate_growth_rate %>%
-    rename(inflation = Percent) %>%
-    filter(Date >= '1960-01-01')
-plot(inflation, type = 'l')
-summary(inflation %>%
-            filter(Date >= '1960-01-01') %>%
-            .[, 2])
-
-# 3. 10-year T-bill yield
-tbill_yield = tbill_yield %>%
-    rename(tbill_yield = Value) %>%
-    filter(Date >= '1960-01-01')
-plot(tbill_yield, type = 'l')
-summary(tbill_yield %>% .[, 2])
-
-# 4. Consumer confidence
-consumer_confidence = consumer_confidence %>%
-    rename(consumer_confidence = Value) %>%
-    filter(Date >= '1960-01-01')
-plot(consumer_confidence, type = 'l')
-summary(consumer_confidence %>% .[, 2])
-
-# 5. Shiler p/e ratio
-shiller_pe = shiller_pe %>%
-    rename(shiller_pe = Value) %>%
-    filter(Date >= '1960-01-01')
-plot(shiller_pe, type = 'l')
-summary(shiller_pe %>% .[, 2])
-
-# 6. Market Capitalization to GDP ratio, "Buffet Indicator"
-gdp_monthly = gdp %>%
-    quarterly2monthly %>%
-    filter(Date >= '1960-01-01')
-mktcap_gdp_ratio = inner_join(sp500, gdp_monthly, by = 'Date') %>%
-    mutate(mktcap_gdp_ratio = Value.x / Value.y) %>%
-    select(Date, mktcap_gdp_ratio)
-plot(mktcap_gdp_ratio, type = 'l')
-summary(mktcap_gdp_ratio %>% .[, 2])
-
 
 # 7. S&P500 return, monthly (not annualized)
 calc_sp500_return = function(return_months = 1) {
@@ -215,30 +182,6 @@ calc_sp500_return = function(return_months = 1) {
 }
 
 sp500_return = calc_sp500_return(1)
-
-# Stock market downturns
-sp500_return %>% filter(sp500_return < -10)
-sp500_return %>% filter(sp500_return > 10)
-hist(sp500_return$sp500_return)
-
-sp500_re3 = calc_sp500_return(3)
-sp500_re6 = calc_sp500_return(6)
-sp500_re12 = calc_sp500_return(12)
-sp500_re60 = calc_sp500_return(60)
-
-# # 8. Volatility of SP500
-# sp500_daily = tq_get('^GSPC', from = '1954-12-01', to = '2021-01-31') %>% 
-#   select('date','close') %>% 
-#   rename(Date = date, Value = close)
-# 
-# sp500_daily_return = sp500_daily %>%
-#   calculate_growth_rate(periods = 1, lagPeriod = 1)
-# 
-# 
-# volatility = sp500_daily_return %>% 
-#   group_by(Date = as.Date(paste(year(Date), month(Date), '01', sep = '-'))) %>% 
-#   summarise(volatility = sd(Percent)) %>% 
-#   filter(Date >= '1960-01-01')
 
 
 # IV. All together
