@@ -5,6 +5,8 @@ library(glmnet)
 library(randomForest)
 library(caret)
 
+source('r/util.R')
+
 
 df = read_csv(glue('{DATA_FOLDER}/processed/labelled_data.csv')) %>%
     select(-starts_with('real_price_f_'),
@@ -18,15 +20,6 @@ df_test = df %>% filter(date >= train_test_split_date, date <= train_test_split_
 
 
 
-logit.p.fitter = function(df) {
-    glm(bubble ~ . - date, data = df, family = binomial(link = 'probit'))
-}
-logit.p.predictor = function(model, new_data) {
-    scores = predict(model, newdata = new_data, type = 'response')
-    ifelse(scores > prevalence, 1, 0)
-}
-
-logit.p.res = model_backtest(df, logit.p.fitter, logit.p.predictor)
 
 
 # the data set is imbalance

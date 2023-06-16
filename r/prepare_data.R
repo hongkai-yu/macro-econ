@@ -15,8 +15,25 @@ maddison_gdp = read_csv(glue('{DATA_FOLDER}/processed/maddison_gdp.csv'), col_ty
     select("year", "gdp") %>%
     mutate(gdp = gdp / 1e6)
 
+gold = read_csv(glue('{DATA_FOLDER}/processed/gold.csv'), col_types = cols(date = col_date())) %>%
+    select(date, gold_price = usd_am)
+
+historical_gold = read_csv(glue('{DATA_FOLDER}/processed/historical_gold_prices.csv'), col_types = cols(year = col_integer())) %>%
+    transmute(year, gold_price = price)
+
+historical_gold %>%
+    inner_join(gold %>%
+                   group_by(year = year(date)) %>%
+                   summarise(gold_price_year_mean = mean(gold_price)), by = "year") %>%
+    View
+
+gold %>% filter(year(date) == 1971) %>% View
+hey
 
 # II. Clean data
+# Note: date alignment: all the data is the for the end of a certain quarter, or the beginning of the next quarter
+# For 2021-Q1, all the data should be available at the start of 2021-04, at that point we make predictions for 2021-Q2
+
 # 1. real GDP
 consistent_factor = modern_real_gdp %>%
     group_by(year = year(date)) %>%
@@ -29,57 +46,87 @@ consistent_factor = modern_real_gdp %>%
     mean
 
 all_real_gdp = maddison_gdp %>%
-    filter(year >= START_YEAR - 10, year < 1947) %>%
+    filter(year >= START_YEAR - 10, year < year(first(modern_real_gdp$date))) %>%
     mutate(real_gdp = gdp * consistent_factor) %>%
     # duplicate each row four times with 1, 2,3,4
     uncount(4, .id = 'quarter') %>%
-    mutate(date = ymd(paste(year, quarter * 3 - 2, 1, sep = '-'))) %>%
+    mutate(date = make_quarter_date(year, quarter)) %>%
     select(date, real_gdp) %>%
     bind_rows(modern_real_gdp)
+
+
 
 
 # 2. Shiller PE
 shiller_quarterly = shiller %>%
     group_by(year = year(date), quarter = quarter(date)) %>%
-    summarize(across(all_of(c("cpi", "gs10", "total_cape")), mean),
-              across(all_of("real_price"), last)) %>%
+    summarize(across(all_of(c("cpi", "total_cape")), mean),
+              across(all_of(c("real_price", "sp_price", "gs10")), first)) %>% # start of the quarter
     ungroup() %>%
+    # the start of the next quarter, which is the end of the current quarter
+    mutate(across(all_of(c("real_price", "sp_price", "gs10")), ~lead(.x, 1))) %>%
     mutate(date = make_quarter_date(year, quarter)) %>%
     select(date, everything()) %>%
     filter(year >= START_YEAR - 10)
 
-cleaned_data = shiller_quarterly %>%
-    inner_join(all_real_gdp, by = c("date" = "date"))
+# 3. Gold
+all_gold_price = historical_gold %>%
+    filter(year >= START_YEAR - 10, year < year(first(gold$date))) %>%
+    uncount(4, .id = 'quarter') %>%
+    mutate(date = make_quarter_date(year, quarter)) %>%
+    select(date, gold_price) %>%
+    bind_rows(
+        gold %>%
+            group_by(year = year(date), quarter = quarter(quarter(date))) %>%
+            summarize(gold_price = last(gold_price)) %>%
+            ungroup() %>%
+            mutate(date = make_quarter_date(year, quarter)) %>%
+            select(date, gold_price)
+    )
+
+cleaned_data = plyr::join_all(
+    list(shiller_quarterly, all_real_gdp, all_gold_price),
+    by = "date", type = "inner")
 
 # III. Create features and the label
 features_data = cleaned_data %>%
     mutate(bft_indicator = real_price / real_gdp) %>%
+    mutate(real_gold_price = gold_price / cpi * last(cpi)) %>%
     mutate(across(all_of(c("cpi", "real_gdp")), list(d_1y = ~.x / lag(.x, 4) - 1))) %>% # calculate yearly change in gdp and cpi
-    mutate(across(all_of("real_price"), list(   # difference between current and previous year
+    mutate(across(all_of(c("real_price", "gs10", "sp_price", "real_gold_price", "gold_price")), list(   # the change of real price and interest rate
         d_3m = ~.x / lag(.x, 1) - 1,
         d_6m = ~.x / lag(.x, 2) - 1,
         d_1y = ~.x / lag(.x, 4) - 1,
         d_5y = ~.x / lag(.x, 20) - 1
     ))) %>%
-    mutate(across(all_of("real_price"), list(
+    mutate(across(all_of(c("real_price", "sp_price")), list(
         f_3m = ~lead(.x, 1) / .x - 1,
         f_6m = ~lead(.x, 2) / .x - 1,
         f_1y = ~lead(.x, 4) / .x - 1
     ))) %>%
     filter(year >= START_YEAR)
 
+features_data %>%
+    filter(date >= "1950-01-01", date <= "1990-01-01") %>%
+    ggplot(aes(x = date, y = real_gold_price)) +
+    geom_line() +
+    geom_line(aes(y = real_price), color = "red") +
+    theme_minimal()
+
+features_data %>%
+    filter(date >= "2000-01-01") %>%
+    ggplot(aes(x = date, y = real_price / real_gold_price)) +
+    geom_line() +
+    theme_minimal()
+features_data %>% select(date, real_price, real_gold_price) %>% View
+
 
 quantile_level = 0.1
-threshold_3m = quantile(features_data$real_price_d_3m, quantile_level)
-threshold_6m = quantile(features_data$real_price_d_6m, quantile_level)
-threshold_1y = quantile(features_data$real_price_d_1y, quantile_level)
+threshold_3m = quantile(features_data$sp_price_d_3m, quantile_level)
 
 labelled_data = features_data %>%
     mutate(bubble = ifelse(
-        (real_price_f_3m < threshold_3m) |
-            (real_price_f_6m < threshold_6m) |
-            (real_price_f_1y < threshold_1y),
-        1, 0)
+        sp_price_f_3m < threshold_3m, 1, 0)
     )
 
 labelled_data %>%
@@ -93,6 +140,9 @@ labelled_data %>%
 ################################################## EXPLORATORY ANALYSIS ##################################################
 
 labelled_data = read_csv(glue('{DATA_FOLDER}/processed/labelled_data.csv'))
+labelled_data %>%
+    select(date, bubble, sp_price_f_3m, sp_price_d_3m, real_price_d_3m, real_price_f_3m) %>%
+    View
 # fit random forest
 library(randomForest)
 library(corrplot)
