@@ -11,12 +11,14 @@ make_quarter_date = function(year, quarter) {
     ymd(paste(year, quarter * 3 - 2, 1, sep = '-'))
 }
 
+setup = function() {
+    PRICE_HISTORY <<- read_csv(glue("{DATA_FOLDER}/processed/labelled_data.csv")) %>%
+        transmute(date, real_return = real_price_d_3m, real_cash_return = (1 / cpi) / (1 / lag(cpi)) - 1) %>%
+        mutate(real_return = ifelse(is.na(real_return), 0, real_return),
+               real_cash_return = ifelse(is.na(real_cash_return), 0, real_cash_return))
 
-PRICE_HISTORY = read_csv(glue("{DATA_FOLDER}/processed/labelled_data.csv")) %>%
-    transmute(date, real_return = real_price_d_3m, real_cash_return = (1 / cpi) / (1 / lag(cpi)) - 1) %>%
-    mutate(real_return = ifelse(is.na(real_return), 0, real_return),
-           real_cash_return = ifelse(is.na(real_cash_return), 0, real_cash_return))
-
+    plan(multisession, workers = 4)
+}
 
 #' simulate a trading strategy
 #' @param action a data frame with date and action column
@@ -37,7 +39,7 @@ trade_simulate = function(action, price_history = PRICE_HISTORY, start_date = '1
 
 #' plot a simulation result
 #' @param simulated_res a data frame with date and cumulative_return, typically from trade_simulate
-plot_simulation = function(simulated_res) {
+plot_simulation = function(simulated_res, title = "Strategy") {
     start_date = first(simulated_res$date)
     end_date = last(simulated_res$date)
 
@@ -48,7 +50,7 @@ plot_simulation = function(simulated_res) {
         ggplot(aes(x = date, y = cumulative_return)) +
         geom_line() +
         geom_hline(yintercept = 1, linetype = "dashed") +
-        labs(title = "Strategy",
+        labs(title = title,
              subtitle = glue(
                  "Cumulative return of $1 invested in {year(start_date)} will be ${round(last(normalized$cumulative_return), 2)} in {year(end_date)}"
              ),
@@ -84,16 +86,16 @@ model_historical_predict = function(df, model_fitter, model_predictor) {
     plan(multisession, workers = 4)
     evaluation_dates %>%
         future_map(~model_back_test_one_time(df, model_fitter, model_predictor, prediction_date = .),
-                   .options = future_options(seed = TRUE)) %>%
+                   .options = furrr_options(seed = TRUE)) %>%
         bind_rows()
 }
 
 #' tune the decision threshold of a classification model
 #' @param df_scores a data frame with scores column and date column
 #' @return a list with return_star, threshold_star, thresholds, returns
-tune_treshold = function(df_scores, thresholds = seq(from = 0.01, to = 0.99, by = 0.01)) {
+tune_treshold = function(df_scores, thresholds = seq(from = 0.05, to = 0.95, by = 0.05)) {
     returns = thresholds %>%
-        map_dbl(~{
+        future_map_dbl(~{
             threshold = .
 
             df_scores %>%
@@ -101,7 +103,7 @@ tune_treshold = function(df_scores, thresholds = seq(from = 0.01, to = 0.99, by 
                 trade_simulate %>%
                 .$cumulative_return %>%
                 last
-        })
+        }, .options = furrr_options(seed = TRUE))
 
     list(
         return_star = max(returns),
@@ -114,7 +116,8 @@ tune_treshold = function(df_scores, thresholds = seq(from = 0.01, to = 0.99, by 
 logit_fitter = function(df) {
     logit_model = glm(bubble ~ . - date, data = df, family = binomial)
     scores = logit_model %>% predict(type = 'response')
-    tuned_res = tibble(date = df$date, scores = scores) %>% tune_treshold
+    df_scores = tibble(date = df$date, scores = scores)
+    tuned_res = tune_treshold(df_scores)
 
     list(prob_model = logit_model, tuned_res = tuned_res)
 }
@@ -127,15 +130,21 @@ logit_predictor = function(model, new_data) {
 }
 
 rf_fitter = function(df) {
+    # dated_weights = ifelse(
+    #     last(df$date) - df$date <= years(20),
+    #     3, 1
+    # )
+    # rf_model = randomForest(bubble ~ . - date, data = df, weights = dated_weights)
     rf_model = randomForest(bubble ~ . - date, data = df)
-    scores = rf_model %>% predict(type = 'prob') %>% .[,2]
-    tuned_res = tibble(date = df$date, scores = scores) %>% tune_treshold
+    scores = rf_model %>% predict(type = 'prob') %>% .[, 2]
+    df_scores = tibble(date = df$date, scores = scores)
+    tuned_res = tune_treshold(df_scores)
 
     list(prob_model = rf_model, tuned_res = tuned_res)
 }
 
 rf_predictor = function(model, new_data) {
-    new_data$scores = predict(model$prob_model, newdata = new_data, type = 'prob')[,2]
+    new_data$scores = predict(model$prob_model, newdata = new_data, type = 'prob')[, 2]
     new_data %>%
         mutate(threshold = model$tuned_res$threshold_star) %>%
         mutate(prediction = ifelse(scores > threshold, 1, 0))

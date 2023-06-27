@@ -36,7 +36,7 @@ tab.res = cbind(Model,
                 )
 tab.res
 xtable(tab.res, label = 'tab:res', caption = 'The peformance of models') %>%  
-  print(file = './thesis/tab_res.tex')
+  print(file = '../../thesis/tab_res.tex')
 
 # input variables summary
 df_display %>% 
@@ -44,13 +44,13 @@ df_display %>%
   tableContinuous(cap = 'Summary of features', lab = 'tab:features', 
                   stats = list('min', 'q1', 'median', 'q3', 'max', 'mean', 's'),
                   longtable = FALSE, font.size = 'normalsize') %>% 
-  capture.output(file = './thesis/tab_features.tex')
+  capture.output(file = '../../thesis/tab_features.tex')
 
 # Imbalance bubble (output variables summary)
 df_display %>% select(Bubble) %>% 
   tableNominal(cap = 'Bubble distribution', lab = 'tab:imbalance',
                longtable = FALSE, font.size = 'normalsize') %>% 
-  capture.output(file = './thesis/tab_imbalance.tex')
+  capture.output(file = '../../thesis/tab_imbalance.tex')
   
 # plot theme
 th = theme(
@@ -72,7 +72,7 @@ df %>%
   # geom_text(data = df %>% filter(bubble == 1), aes(label = year(Date))) + 
   scale_x_date(date_breaks = '8 years', date_labels = '%Y') + 
   th
-ggsave('./figures/bubble_def.png')
+ggsave('../../figures/bubble_def.png')
 
 
 # CV threshold
@@ -90,14 +90,14 @@ cv_threshold.output %>%
   geom_text(aes(x = threshold - 0.015, y = 0.3, label = threshold), col = 'red') +
   geom_text(aes(x = 0.49, y = 0.3, label = 0.5), col = 'blue') +
   th
-ggsave('./figures/cv_threshold.png')
+ggsave('../../figures/cv_threshold.png')
 
 
 # logit RW regression
-stargazer(logit_balance.out, out = './thesis/tab_logitRW.tex', label = 'tab:logit')
+stargazer(logit_balance.out, out = '../../thesis/tab_logitRW.tex', label = 'tab:logit')
 
 # variance important RF-CV
-png(filename = './figures/varImp.png')
+png(filename = '../../figures/varImp.png')
 varImpPlot(rf.out, type = 1, main = 'Variable importance for Random Forest')
 dev.off()
 
@@ -119,7 +119,7 @@ rf_df.forplot %>%
   ) +
   scale_x_date(date_breaks = '8 years', date_labels = '%Y') + 
   th
-ggsave('./figures/rfcv_full.png')
+ggsave('../../figures/rfcv_full.png')
 
 # RNN prob
 
@@ -138,7 +138,7 @@ rnn %>%
     y = 'Density'
   ) +
   th
-ggsave('./figures/rnn.png')
+ggsave('../../figures/rnn.png')
 
 # result graph
 tab.res %>% data.frame %>% 
@@ -151,19 +151,19 @@ tab.res %>% data.frame %>%
   geom_label_repel(label = Model, size = 5) +
   labs(title = 'Sensitivity and Specificity by Model') +
   th
-ggsave('./figures/res.png')
+ggsave('../../figures/res.png')
 
 # robustness analysis
 colnames(tab.rob) = c('0.5 percentile', '1 percentile', '1.5 percentile', '5 percentile')
 rownames(tab.rob) = c('3 months', '4 months', '6 months', '7 months', '12 months')
 xtable(tab.rob, label = 'tab:rob', 
        caption = 'Balanced accuracy of RF-CV with different percentiles and periods') %>% 
-  print(file = './thesis/tab_rob.tex')
+  print(file = '../../thesis/tab_rob.tex')
 
 # cfm
 xtable(rf.cv.cfm$table, label = 'tab:cfm',
        caption = 'Confusion matrix of the RF-CV model, reference(columns) and prediction(rows)') %>% 
-  print(file = './thesis/tab_cfm.tex')
+  print(file = '../../thesis/tab_cfm.tex')
 
 # overfit 
 1 - (rf.out$confusion[1,3] + rf.out$confusion[2,3]) / 2

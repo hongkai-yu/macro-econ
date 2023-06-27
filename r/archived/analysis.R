@@ -5,7 +5,7 @@ library(glmnet)
 library(randomForest)
 library(caret)
 
-source('r/util.R')
+source('../util.R')
 
 
 df = read_csv(glue('{DATA_FOLDER}/processed/labelled_data.csv')) %>%
